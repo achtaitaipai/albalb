@@ -24,7 +24,7 @@ const tokensPattern: TokenPattern[] = [
     type: "method",
   },
   {
-    pattern: ",",
+    pattern: ",|et",
     type: "separator",
   },
   {

@@ -66,7 +66,10 @@ export const compile = (tokens: Token[]) => {
 
 const getOperator = (token: Token, tokens: Token[], index: number) => {
   let operator: Operator | undefined;
-  if (!(tokens[index - 1]?.type === "value")) {
+  if (
+    tokens[index - 1]?.type !== "value" &&
+    tokens[index - 1]?.type !== "closer"
+  ) {
     token.isUnary = true;
     operator = symbols[token.value]?.unary;
   } else operator = symbols[token.value]?.binary;

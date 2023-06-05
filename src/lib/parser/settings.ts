@@ -1,3 +1,4 @@
+import { numberToLetter } from "../numberToLetter";
 import type { Operator, OperatorSymbol, TokenAction } from "./types";
 
 const operators: Record<string, Operator> = {
@@ -43,9 +44,10 @@ export const symbols: Record<string, OperatorSymbol> = {
 };
 
 export const methods: Record<string, TokenAction> = {
-  CRIER: (arg1: string) => arg1.toLocaleUpperCase(),
+  CRIER: (...args: string[]) => args.map((t) => t.toLocaleUpperCase()).join(""),
   AJOUTER: (...args: string[]) => args.reduce((p, c) => p + c, ""),
   PARMI: (...args: string[]) => args[Math.floor(Math.random() * args.length)],
-  TRIER: (...args: string[]) =>
+  RANGER: (...args: string[]) =>
     args.length > 1 ? args.sort().join(" ") : args[0].split("").sort().join(""),
+  MOT: (arg: string) => numberToLetter(arg),
 };
