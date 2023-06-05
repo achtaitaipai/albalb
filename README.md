@@ -1,6 +1,6 @@
 # [Albalb](https://achtaitaipai.github.io/albalb/)
 
-**[Albalb](https://achtaitaipai.github.io/albalb/) ** est un langage d'expression qui permet de manipuler des chaînes de caractères.
+[Albalb](https://achtaitaipai.github.io/albalb/)  est un langage d'expression qui permet de manipuler des chaînes de caractères.
 
 Il est composé de symboles, de valeurs et de fonctions dont la combinaison permet de retourner une nouvelle chaîne de caractères.
 

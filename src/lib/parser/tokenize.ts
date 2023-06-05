@@ -35,6 +35,7 @@ const tokensPattern: TokenPattern[] = [
     pattern: "\\)",
     type: "closer",
   },
+  { pattern: "[^\\s]+", type: "unknown" },
 ];
 
 export const regex = new RegExp(

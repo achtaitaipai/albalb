@@ -44,6 +44,19 @@ main {
   place-content: center;
 }
 
+button {
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+  padding: 0.2em;
+  padding: 0;
+}
+
+button svg {
+  width: 1em;
+  display: block;
+}
+
 .terminal {
   inline-size: clamp(20rem, 80vw, 66ch);
   margin-inline: auto;
@@ -67,8 +80,32 @@ main {
   flex: 1;
   line-break: normal;
 }
+.logs {
+  display: flex;
+  align-items: center;
+}
+
+.logs > span {
+  flex: 1;
+}
+
+.logs:not(:hover, :focus) > .copyBtn {
+  opacity: 0;
+}
+
+.copyBtn:active {
+  animation: scale-up 0.3s;
+}
+
+@keyframes scale-up {
+  to {
+    transform: scale(1.25);
+  }
+}
+
 .userInput {
   display: flex;
+  gap: 0.5em;
 }
 
 .terminal .userInput::before {

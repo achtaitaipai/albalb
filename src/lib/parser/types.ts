@@ -4,7 +4,8 @@ export type TokenType =
   | "method"
   | "separator"
   | "opener"
-  | "closer";
+  | "closer"
+  | "unknown";
 
 export type Token = {
   value: string;

@@ -53,6 +53,9 @@ export const compile = (tokens: Token[]) => {
         }
       }
     }
+    if (type === "unknown") {
+      throw Error(`"${value}" ne correspond à aucune commande :/ `);
+    }
   });
   let item = stack.pop();
   while (item) {
