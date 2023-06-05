@@ -17,7 +17,10 @@ const splitNumber = (str: string) => {
   return res;
 };
 
+export const isNumberString = (str: string) => !isNaN(parseInt(str));
+
 export const numberToLetter = (input: number | string) => {
+  if (typeof input === "string" && !isNumberString(input)) return input;
   const str = splitNumber(cleanNumber(input));
   const chunks = str.map((chunk, i) => {
     const num = parseInt(chunk.join(""));

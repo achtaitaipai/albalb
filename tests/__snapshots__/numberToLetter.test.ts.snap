@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`numberToLetter() > returns the correct number 1`] = `"un"`;
+
+exports[`numberToLetter() > returns the correct number 2`] = `"vingt-et-un"`;
+
+exports[`numberToLetter() > returns the correct number 3`] = `"cent"`;
+
+exports[`numberToLetter() > returns the correct number 4`] = `"deux-cents"`;
+
+exports[`numberToLetter() > returns the correct number 5`] = `"deux-cent-quarante-trois"`;
+
+exports[`numberToLetter() > returns the correct number 6`] = `"mille"`;
+
+exports[`numberToLetter() > returns the correct number 7`] = `"onze-mille"`;
+
+exports[`numberToLetter() > returns the correct number 8`] = `"huit-cent-soixante-trois-mille-neuf-cent-soixante-neuf"`;
+
+exports[`numberToLetter() > returns the correct number 9`] = `"cent-quarante-six-million-cinq-cent-quarante-huit-mille-neuf-cent-soixante-dix-huit"`;
