@@ -48,7 +48,8 @@ export const symbols: Record<string, OperatorSymbol> = {
 export const methods: Record<string, TokenAction> = {
   CRIER: (...args: string[]) =>
     args.map((t) => numberToLetter(t).toLocaleUpperCase()).join(""),
-  PARMI: (...args: string[]) => args[Math.floor(Math.random() * args.length)],
+  PARMI: (...args: string[]) =>
+    numberToLetter(args[Math.floor(Math.random() * args.length)]),
   RANGER: (...args: string[]) =>
     args.length > 1
       ? args.map(numberToLetter).sort().join(" ")

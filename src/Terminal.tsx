@@ -1,6 +1,6 @@
-import { useRef, useState, useEffect, useMemo } from "react";
-import { compile, solve, tokenize } from "./lib/parser";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { CopyBtn } from "./CopyBtn";
+import { parse } from "./lib/parser";
 
 type Log = {
   id: number;
@@ -26,11 +26,7 @@ export const Terminal = () => {
     setLogs((l) => [...l, { type: "userInput", value, id: l.length }]);
     inputRef.current.value = "";
     try {
-      const tokens = tokenize(value);
-      if (!tokens.length)
-        throw Error(`"${value}" ne correspond à aucune commande :/`);
-      const compiled = compile(tokens);
-      const output = solve(compiled);
+      const output = parse(value);
       setLogs((l) => [...l, { type: "result", value: output, id: l.length }]);
       historyCursor = undefined;
     } catch (err) {
@@ -65,6 +61,7 @@ export const Terminal = () => {
   useEffect(() => {
     inputRef.current?.scrollIntoView();
   }, [inputRef, logs]);
+
   return (
     <div className="terminal" onClick={() => inputRef.current?.focus()}>
       {logs.map(({ id, value, type }) => (

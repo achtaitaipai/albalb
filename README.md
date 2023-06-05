@@ -39,5 +39,5 @@ Les fonctions permettent de transformer un ensemble de valeurs en une chaîne de
 | -------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | `CRIER`  | `CRIER('bonjour')` **BONJOUR**                               | Retourne son ou ses paramètres en lettres majuscules.        |
 | `PARMI`  | `PARMI(1,2,3,4,5,6)` **trois**                               | Retourne l'un de ses paramètres au hasard.                   |
-| `RANGER` | `RANGER('bonour')` **bjnooru** `RANGER('bonour','au revoir')` **aurevoir bonjour** | S'il n'y a qu'un paramètre, il le retourne avec ses lettres dans l'ordre alphabétique. Autrement il retourne tous ses paramètres à la suite, mais dans l'ordre alphabétique. |
+| `RANGER` | `RANGER('bonjour')` **bjnooru** `RANGER('bonour','au revoir')` **aurevoir bonjour** | S'il n'y a qu'un paramètre, il le retourne avec ses lettres dans l'ordre alphabétique. Autrement il retourne tous ses paramètres à la suite, mais dans l'ordre alphabétique. |
 
