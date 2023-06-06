@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { CopyBtn } from "./CopyBtn";
 import { parse } from "./lib/parser";
+import { useSelectionRange } from "./lib/hooks/useSelectionRange";
 
 type Log = {
   id: number;
@@ -8,11 +9,13 @@ type Log = {
   value: string;
 };
 
+let historyCursor = 0;
+
 export const Terminal = () => {
   const [logs, setLogs] = useState<Log[]>([]);
-  const inputRef = useRef<HTMLTextAreaElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  let historyCursor: number | undefined;
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+  const setSelectionRange = useSelectionRange(inputRef);
 
   const userInputs = useMemo(
     () => logs.filter((l) => l.type === "userInput"),
@@ -28,7 +31,7 @@ export const Terminal = () => {
     try {
       const output = parse(value);
       setLogs((l) => [...l, { type: "result", value: output, id: l.length }]);
-      historyCursor = undefined;
+      historyCursor = 0;
     } catch (err) {
       if (err instanceof Error) {
         const value = err.message;
@@ -44,31 +47,34 @@ export const Terminal = () => {
       handleSubmit();
     }
     if (e.code === "ArrowUp") {
-      historyCursor =
-        historyCursor !== undefined
-          ? (historyCursor + 1) % userInputs.length
-          : 1;
-      inputRef.current.value = userInputs.at(-historyCursor)?.value ?? "";
+      e.preventDefault();
+      historyCursor = (historyCursor + 1) % userInputs.length;
+      const val = userInputs.at(-historyCursor)?.value;
+      if (val) setInputValue(val);
     }
     if (e.code === "ArrowDown") {
+      e.preventDefault();
       historyCursor =
-        historyCursor !== undefined
-          ? ((historyCursor - 1) % userInputs.length) % userInputs.length
-          : 0;
-      inputRef.current.value = userInputs.at(-historyCursor)?.value ?? "";
+        (historyCursor + (userInputs.length - 1)) % userInputs.length;
+      const val = userInputs.at(-historyCursor)?.value;
+      if (val) setInputValue(val);
     }
   };
   useEffect(() => {
     inputRef.current?.scrollIntoView();
   }, [inputRef, logs]);
 
+  const setInputValue = (value: string) => {
+    if (!inputRef.current) return;
+    inputRef.current.value = value;
+    setSelectionRange(value.length);
+  };
+
   return (
-    <div className="terminal" onClick={() => inputRef.current?.focus()}>
+    <div className="terminal">
       {logs.map(({ id, value, type }) => (
-        <div className="logs">
-          <span className={type} key={id}>
-            {value}
-          </span>
+        <div className="logs" key={id}>
+          <span className={type}>{value}</span>
           <CopyBtn toCopy={value} />
         </div>
       ))}
