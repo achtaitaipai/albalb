@@ -19,6 +19,9 @@ describe("operators", () => {
   it("-", () => {
     expect(parse("-'bonjour'")).toBe("ruojnob");
   });
+  it("par", () => {
+    expect(parse("'bonjour' par 3")).toBe("bo");
+  });
 });
 
 describe("functions", () => {

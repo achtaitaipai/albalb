@@ -30,6 +30,7 @@ Les opérateurs sont des mots qui permettent de combiner plusieurs valeurs entre
 |  `avec`   |            `'tuer' avec 'amour' `**tueramour**             |
 |  `fois`   |              `3 fois 'rien'` **rienrienrien**              |
 |    `-`    |                       `-bla` **alb**                       |
+|   `par`   |                  `'bonjour' par 3` **bo**                  |
 
 ## Fonctions
 

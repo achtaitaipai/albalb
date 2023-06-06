@@ -97,6 +97,27 @@ button svg {
   animation: scale-up 0.3s;
 }
 
+.copyBtn {
+  position: relative;
+}
+
+.copyBtn.success::after {
+  content: "copié";
+  position: absolute;
+  right: 150%;
+  top: -100%;
+  border: 1px solid var(--oc-gray-2);
+  background-color: var(--oc-gray-1);
+  padding: 0.2em;
+  animation: come-in 0.3s;
+}
+
+@keyframes come-in {
+  from {
+    transform: translate(0, 100%) scale(1, 0);
+  }
+}
+
 @keyframes scale-up {
   to {
     transform: scale(1.25);
@@ -106,6 +127,10 @@ button svg {
 .userInput {
   display: flex;
   gap: 0.5em;
+}
+
+.result::before {
+  content: "\00a0 ";
 }
 
 .terminal .userInput::before {

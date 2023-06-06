@@ -23,6 +23,20 @@ const operators: Record<string, Operator> = {
       return numberToLetter(res);
     },
   },
+  par: {
+    priority: 2,
+    associativity: "left",
+    action: (val1: string, val2: string) => {
+      if (isNumberString(val2))
+        return numberToLetter(
+          val1
+            .split("")
+            .slice(0, val1.length / parseInt(val2))
+            .join("")
+        );
+      throw Error(`mauvaise utilisation de l'opérateur 'par'`);
+    },
+  },
   rev: {
     priority: 4,
     associativity: "right",
@@ -39,6 +53,9 @@ export const symbols: Record<string, OperatorSymbol> = {
   },
   fois: {
     binary: operators.fois,
+  },
+  par: {
+    binary: operators.par,
   },
   "-": {
     unary: operators.rev,
